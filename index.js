@@ -14,14 +14,7 @@ app.get('/', function (request, response) {
 });
 
 app.post('/', function (req, res) {
-  const assistant = new Assistant({ request: req, response: res });
-  function responseHandler(assistant) {
-    // Complete your fulfillment logic and send a response
-    assistant.tell('Hello, World!');
-  }
-  const actionMap = new Map();
-  actionMap.set('<API.AI_test>', responseHandler);
-  assistant.handleRequest(actionMap);
+  req.write(req);
 })
 
 app.listen(app.get('port'), function () {
