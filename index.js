@@ -14,6 +14,18 @@ app.get('/', function (request, response) {
 });
 
 app.post('/', function (req, res) {
+  var response={
+  "speech": "Hello world",
+  "displayText": "Hello world",
+  "data": {
+    "google": {
+      "expect_user_response": true,
+      "is_ssml": true,
+      "permissions_request": {}
+    }
+  },
+  "contextOut": {}
+}
   req.write(req);
 })
 
