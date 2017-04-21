@@ -19,8 +19,13 @@ app.post('/', function (request, response) {
     displayText: "Hello world",
     data: {},
     contextOut: [],
-    source:"",
-    followupEvent:{}
+    source: "",
+    followupEvent: {
+      name: "get-user-information",
+      data: {
+
+      }
+    }
   }
   response.end(JSON.stringify(result));
 });
