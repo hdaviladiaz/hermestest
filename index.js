@@ -17,14 +17,10 @@ app.post('/', function (request, response) {
   var result = {
     speech: "Hello world",
     displayText: "Hello world",
-    data: {
-      google: {
-        expect_user_response: true,
-        is_ssml: true,
-        permissions_request: {}
-      }
-    },
-    "contextOut": {}
+    data: {},
+    contextOut: [],
+    source:"",
+    followupEvent:{}
   }
   response.end(JSON.stringify(result));
 });
