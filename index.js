@@ -12,20 +12,21 @@ app.get('/', function (request, response) {
   response.render('pages/index');
 });
 
-app.post('/', function (req, res) {
-  var response={
-  "speech": "Hello world",
-  "displayText": "Hello world",
-  "data": {
-    "google": {
-      "expect_user_response": true,
-      "is_ssml": true,
-      "permissions_request": {}
-    }
-  },
-  "contextOut": {}
-}
-  res.end(JSON.stringify(response));
+app.post('/', function (request, response) {
+  response.writeHead(200, { "Content-Type": "application/json" });
+  var result = {
+    speech: "Hello world",
+    displayText: "Hello world",
+    data: {
+      google: {
+        expect_user_response: true,
+        is_ssml: true,
+        permissions_request: {}
+      }
+    },
+    "contextOut": {}
+  }
+  response.end(JSON.stringify(result));
 });
 
 app.listen(app.get('port'), function () {
