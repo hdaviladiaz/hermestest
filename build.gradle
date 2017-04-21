@@ -1,20 +1,32 @@
-plugins {
-  id "io.ratpack.ratpack-groovy" version "1.4.5"
+buildscript {
+	ext {
+		springBootVersion = '1.5.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
 }
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
 
 repositories {
-  jcenter()
+	mavenCentral()
 }
 
-mainClassName = "Main"
 
 dependencies {
-  runtime "org.slf4j:slf4j-simple:1.7.12"
-  compile "com.heroku.sdk:heroku-jdbc:0.1.1"
-  compile "org.postgresql:postgresql:9.4-1201-jdbc4"
-  testCompile 'junit:junit:4.11'
-}
-
-task stage {
-  dependsOn installDist
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+	testCompile "com.github.tomakehurst:wiremock:2.6.0"
+    testCompile 'io.rest-assured:rest-assured:3.0.2'
+    testCompile 'io.rest-assured:spring-mock-mvc:3.0.2'
 }
