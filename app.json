@@ -1,6 +1,8 @@
 {
-  "name": "Getting Started with Gradle on Heroku",
-  "description": "A bare-bones Gradle app, which can easily be deployed to Heroku.",
-  "image": "heroku/gradle",
-  "addons": [ "heroku-postgresql" ]
+  "name": "Start on Heroku: Node.js",
+  "description": "A barebones Node.js app using Express 4",
+  "repository": "https://github.com/heroku/node-js-getting-started",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
 }
