@@ -1,33 +1,15 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
-app.set('port', (process.env.PORT || 5000));
-
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
+app.use(bodyParser.json());
+var action_manager = require("./actions/action_manager.js");
+app.set('port', (5000));
 app.get('/', function (request, response) {
-  response.render('pages/index');
+  response.end('Wellcome to HERMES Assistant API');
 });
 
 app.post('/', function (request, response) {
-  response.writeHead(200, { "Content-Type": "application/json" });
-  var result = {
-    speech: "Hello world",
-    displayText: "Hello world",
-    data: {},
-    contextOut: [],
-    source: "",
-    followupEvent: {
-      name: "get-user-information",
-      data: {
-
-      }
-    }
-  }
-  response.end(JSON.stringify(result));
+  action_manager.processRequest(request.body, response);
 });
 
 app.listen(app.get('port'), function () {
