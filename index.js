@@ -26,7 +26,7 @@ app.post('/', function (req, res) {
   },
   "contextOut": {}
 }
-  req.write(req);
+  req.write(JSON.stringify(response));
 })
 
 app.listen(app.get('port'), function () {
