@@ -8,15 +8,19 @@ var execute = function (request) {
         passport: request.result.parameters.passport,
     }
     user_service.updateCurrentUser(user);
+    if (request.result.parameters.parameters) {
+        var parameters = JSON.parse(request.result.parameters.parameters);
+        request.customParameters = parameters;
+    }
     var result = action_manager.executeModule(action, request);
     return result;
 }
 
-var createEventRequest = function (actionName) {
+var createEventRequest = function (actionName, parameters) {
     return {
         event: {
             name: "get-user-information",
-            data: { "action": actionName }
+            data: { "action": actionName, "parameters": JSON.stringify(parameters) }
         }
     }
 }
