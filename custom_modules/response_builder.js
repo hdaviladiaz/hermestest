@@ -15,12 +15,12 @@ var createResponse = function (options) {
             data: options.event.data
         }
     }
-    if (options.context) {
-        result.context = {
-            name: options.context.name,
-            parameters: options.context.parameters
-        }
-    }
+    // if (options.context) {
+    //     result.context = {
+    //         name: options.context.name,
+    //         parameters: options.context.parameters
+    //     }
+    // }
     return result;
 }
 exports.createResponse = createResponse;
