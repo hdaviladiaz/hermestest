@@ -9,7 +9,7 @@ var processRequest = function (request, response) {
     var result = executeModule(module_name, request, response);
     response.end(JSON.stringify(result));
 }
-var executeModule = function (moduleName, request) {
+var executeModule = function (module_name, request) {
     var module = module_action_loader.loadActionModule(module_name);
     if (!module || 'function' != typeof module.execute) {
         module = require('../actions/not_found_action.js');
