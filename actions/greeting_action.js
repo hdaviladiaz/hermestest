@@ -7,7 +7,7 @@ var execute = function (request) {
         return eventRequest;
     }
     return {
-        text: "Hello from the greeting action. " + user.name + " " + user.lastname + " " + user.passport,
+        text: "Hello " + user.name + " " + user.lastname,
     }
 }
 
