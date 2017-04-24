@@ -5,7 +5,7 @@ var execute = function (request) {
     var to = request.result.parameters.to|| request.customParameters.to;
     var user = userService.getCurrentUser();
     if (!user) {
-        var eventRequest = userInformation.createEventRequest("get-flights");
+        var eventRequest = userInformation.createEventRequest("get-flights",request.result.parameters);
         return eventRequest;
     }
     return {
