@@ -6,15 +6,11 @@ var execute = function (request) {
             event: {
                 name: "get-user-information",
                 data: { "action": "greeting" }
-            },
-            context:{
-                name:"user-information_dialog_params_action",
-                parameters:{'action':"greeting"}
             }
         }
     }
     return {
-        text: "Hello from the greeting action.",
+        text: "Hello from the greeting action. " +user.name + " "+user.lastname+" "+user.passport,
     }
 }
 

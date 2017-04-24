@@ -1,9 +1,15 @@
-var user_servive = require('../custom_modules/user.js');
+var user_service = require('../custom_modules/user.js');
+var action_manager = require('../actions/action_manager.js');
 var execute = function (request) {
-    return {
-        text: JSON.stringify(request.result)
+    var action = request.parameters.action;
+    var user = {
+        name: request.parameters.name,
+        lastname: request.parameters.lastname,
+        passport: request.parameters.passport,
     }
-
+    user_service.updateCurrentUser(user);
+    var result = action_manager.executeModule(action, request)
+    return result;
 }
 
 exports.execute = execute;
