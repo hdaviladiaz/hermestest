@@ -5,9 +5,11 @@ var execute = function (request) {
         return {
             event: {
                 name: "get-user-information",
-                data:{
-                    "action":"greeting"
-                }
+                data: { "action": "greeting" }
+            },
+            context:{
+                name:"user-information_dialog_params_action",
+                parameters:{'action':"greeting"}
             }
         }
     }
