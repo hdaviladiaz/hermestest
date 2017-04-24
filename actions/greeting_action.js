@@ -6,8 +6,9 @@ var execute = function (request) {
         var eventRequest = userInformation.createEventRequest("greeting");
         return eventRequest;
     }
+    return {
+        text: "Hello from the greeting action. " + user.name + " " + user.lastname + " " + user.passport,
+    }
 }
-return {
-    text: "Hello from the greeting action. " + user.name + " " + user.lastname + " " + user.passport,
-}
+
 exports.execute = execute;
