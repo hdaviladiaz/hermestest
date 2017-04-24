@@ -11,7 +11,7 @@ var createResponse = function (options) {
     if (options.event) {
         result.followupEvent = {
             name: options.event.name,
-            data: options.event.name.data
+            data: options.event.data
         }
     }
     return result;

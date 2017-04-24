@@ -4,7 +4,10 @@ var execute = function (request) {
     if (!user) {
         return {
             event: {
-                name: "get-user-information"
+                name: "get-user-information",
+                data:{
+                    "action-name":"greeting"
+                }
             }
         }
     }
