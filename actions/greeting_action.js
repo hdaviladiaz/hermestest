@@ -1,17 +1,13 @@
-var user_servive = require('../custom_modules/user.js');
+var userService = require('../custom_modules/user.js');
+var userInformation = require('../actions/user-information_action.js');
 var execute = function (request) {
-    var user = user_servive.getCurrentUser();
+    var user = userService.getCurrentUser();
     if (!user) {
-        return {
-            event: {
-                name: "get-user-information",
-                data: { "action": "greeting" }
-            }
-        }
-    }
-    return {
-        text: "Hello from the greeting action. " +user.name + " "+user.lastname+" "+user.passport,
+        var eventRequest = userInformation.createEventRequest("greeting");
+        return eventRequest;
     }
 }
-
+return {
+    text: "Hello from the greeting action. " + user.name + " " + user.lastname + " " + user.passport,
+}
 exports.execute = execute;

@@ -10,9 +10,16 @@ var execute = function (request) {
     user_service.updateCurrentUser(user);
     var result = action_manager.executeModule(action, request);
     return result;
-    // return {
-    //     text: JSON.stringify(result)
-    // };
+}
+
+var createEventRequest = function (actionName) {
+    return {
+        event: {
+            name: "get-user-information",
+            data: { "action": actionName }
+        }
+    }
 }
 
 exports.execute = execute;
+exports.createEventRequest = createEventRequest;
