@@ -6,7 +6,8 @@ var processRequest = function (request, response) {
     var module_name = '';
     if (request && request.result && request.result.metadata && request.result.metadata.intentName)
         module_name = request.result.metadata.intentName;
-    var result = executeModule(module_name, request, response);
+    var options = executeModule(module_name, request, response);
+    var result = response_builder.createResponse(options);
     response.end(JSON.stringify(result));
 }
 var executeModule = function (module_name, request) {
@@ -15,8 +16,7 @@ var executeModule = function (module_name, request) {
         module = require('../actions/not_found_action.js');
     }
     var options = module.execute(request);
-    var result = response_builder.createResponse(options);
-    return result;
+    return options;
 }
 
 exports.processRequest = processRequest;

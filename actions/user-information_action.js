@@ -8,10 +8,11 @@ var execute = function (request) {
         passport: request.result.parameters.passport,
     }
     user_service.updateCurrentUser(user);
-    var result = action_manager.executeModule(action, request)
-    return {
-        text: JSON.stringify(result)
-    };
+    var result = action_manager.executeModule(action, request);
+    return result;
+    // return {
+    //     text: JSON.stringify(result)
+    // };
 }
 
 exports.execute = execute;
