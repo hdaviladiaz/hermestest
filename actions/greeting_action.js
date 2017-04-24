@@ -7,7 +7,7 @@ var execute = function (request) {
         return eventRequest;
     }
     return {
-        text: "Hello " + user.name + " " + user.lastname,
+        text: "Hello " + user.name + " " + user.lastname+". What can I do for you.",
     }
 }
 
