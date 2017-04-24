@@ -6,7 +6,7 @@ var execute = function (request) {
             event: {
                 name: "get-user-information",
                 data:{
-                    "action-name":"greeting"
+                    "action":"greeting"
                 }
             }
         }
