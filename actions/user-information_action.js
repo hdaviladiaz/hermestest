@@ -9,7 +9,9 @@ var execute = function (request) {
     }
     user_service.updateCurrentUser(user);
     var result = action_manager.executeModule(action, request)
-    return result;
+    return {
+        text: JSON.stringify(result)
+    };
 }
 
 exports.execute = execute;
