@@ -3,7 +3,7 @@ var userInformation = require('../actions/user-information_action.js');
 var execute = function (request) {
     var user = userService.getCurrentUser();
     if (!user) {
-        var eventRequest = userInformation.createEventRequest("greeting");
+        var eventRequest = userInformation.createEventRequest("get-flights");
         return eventRequest;
     }
     var from=request.result.parameters.from;
