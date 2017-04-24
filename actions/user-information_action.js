@@ -1,6 +1,7 @@
 var user_service = require('../custom_modules/user.js');
 var action_manager = require('../actions/action_manager.js');
 var execute = function (request) {
+    return JSON.stringify(request);
     var action = request.parameters.action;
     var user = {
         name: request.parameters.name,
