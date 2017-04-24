@@ -3,7 +3,7 @@ var response_builder = require('../custom_modules/response_builder.js');
 
 var processRequest = function (request, response) {
     response.writeHead(200, { "Content-Type": "application/json" });
-    var module_name = "";
+    var module_name = '';
     if (request && request.result && request.result.metadata && request.result.metadata.intentName)
         module_name = request.result.metadata.intentName;
     var module = module_action_loader.loadActionModule(module_name);

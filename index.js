@@ -5,7 +5,7 @@ app.use(bodyParser.json());
 var action_manager = require("./actions/action_manager.js");
 app.set('port', (process.env.PORT || 5000));
 app.get('/', function (request, response) {
-  response.end('Wellcome to HERMES Assistant API'+res);
+  response.end('Wellcome to HERMES Assistant API');
 });
 
 app.post('/', function (request, response) {
