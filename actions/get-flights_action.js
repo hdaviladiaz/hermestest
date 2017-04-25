@@ -6,7 +6,10 @@ var execute = function (request) {
     var from = request.result.parameters.from || request.customParameters.from;
     var to = request.result.parameters.to || request.customParameters.to;
     var date = "05/10/2017"
-    return searchFlightService.searchFlightsToText(from, to, date);
+    var text= searchFlightService.searchFlightsToText(from, to, date);
+    return {
+        text:text
+    }
 }
 
 exports.execute = execute;
