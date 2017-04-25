@@ -11,9 +11,10 @@
     "test": "mocha --recursive"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
     "ejs": "2.5.6",
     "express": "4.15.2",
-    "body-parser": "^1.17.1",
+    "moment": "^2.18.1",
     "redis": "^2.7.1"
   },
   "repository": {

@@ -1,64 +1,48 @@
 var chai = require('chai');
 var expect = chai.expect;
+var moment = require('moment');
+var patternFormat = 'YYYY-MM-DD';
 var searchFlightService = require('../../services/searchFlightService.js');
+var Flight = require('../../model/flight.js');
 
+var defaultOrigin = 'UIO';
+var defaultDestination = 'MAD';
+var defaultDepartureDate = moment('2017-01-05',patternFormat).calendar();
+var expectedOrigin = 'Quito';
+var expectedDestination = 'Guayaquil';
+var expectedDepartureDate = moment('2018-01-22',patternFormat).calendar();
 var expectedFlights;
 
 beforeEach(function() {
-
-  expectedFlights = {
-      "airline": "LATAM",
-      "from": "UIO",
-      "to": "MAD",
-      "requestedDate": "2017-05-01",
-      "currency": "USD",
-      "trips": [{
-              "date": "2015-04-29",
-              "price": "351"
-          },
-          {
-              "date": "2015-04-30",
-              "price": "309"
-          },
-          {
-              "date": "2015-05-01",
-              "price": "309"
-          },
-          {
-              "date": "2015-05-02",
-              "price": "309"
-          },
-          {
-              "date": "2015-05-03",
-              "price": "309"
-          },
-          {
-              "date": "2015-05-05",
-              "price": "309"
-          },
-          {
-              "date": "2015-05-07",
-              "price": "351"
-          }
-      ]
-  }
+  expectedFlights = new Flight(defaultOrigin, defaultDestination, defaultDepartureDate);
 });
 
 describe('Flight service searching', function() {
-  it('should return the JSON readed from file', function() {
-    var destination = 'Guayaquil';
-    var departureDate = '22/01/2018';
-    var flights = searchFlightService.searchFlights('UIO', destination, departureDate);
-    expect(flights).to.deep.equal(expectedFlights);
+  it('should change origin city in the JSON response', function() {
+    var flights = searchFlightService.searchFlights(expectedOrigin, defaultDestination, defaultDepartureDate);
+    expectedFlights.from = expectedOrigin;
+    expect(flights.from).to.equal(expectedFlights.from);
   });
 
-  it('should change origin city in the JSON response', function() {
-    var origin = 'Quito';
-    var destination = 'Guayaquil';
-    var departureDate = '22/01/2018';
-    var flights = searchFlightService.searchFlights(origin, destination, departureDate);
-    expectedFlights.from = origin;
-    expect([flights]).to.deep.include.members([expectedFlights]);
+  it('should change destiny city in the JSON response', function() {
+    var flights = searchFlightService.searchFlights(defaultOrigin, expectedDestination, defaultDepartureDate);
+    expectedFlights.to = expectedDestination;
+    expect(flights.to).to.equal(expectedFlights.to);
+  });
+
+  it('should change requested date in the JSON response', function() {
+    var flights = searchFlightService.searchFlights(defaultOrigin, defaultDestination, expectedDepartureDate);
+    expectedFlights.requestedDate = expectedDepartureDate;
+    expect(flights.requestedDate).to.equal(expectedFlights.requestedDate);
+  });
+
+  it('should change dates of the trips with near suggested dates in the JSON response', function() {
+    var flights = searchFlightService.searchFlights(defaultOrigin, defaultDestination, expectedDepartureDate);
+    expectedFlights.trips = expectedFlights.trips.map(function(x, index){
+      x.date = moment(expectedDepartureDate, 'MM/DD/YYYY').add(index, 'days').calendar();
+      return x;
+    });
+    expect(expectedFlights.trips).to.deep.equal(flights.trips);
   });
 
 });
