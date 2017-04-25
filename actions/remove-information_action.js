@@ -9,7 +9,7 @@ var execute = function (request) {
             user[field] = null;
         }
     }
-    var eventRequest = userInformation.createEventRequest("remove-information");
+    var eventRequest = userInformation.createEventRequest("");
     return eventRequest;
 }
 

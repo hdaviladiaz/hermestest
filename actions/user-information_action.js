@@ -19,8 +19,11 @@ var execute = function (request) {
 var createEventRequest = function (actionName, parameters) {
     var event = {
         name: "get-user-information",
-        data: { "action": actionName, "parameters": JSON.stringify(parameters) }
+        data: { "action": actionName }
     };
+    if(parameters){
+        event.data.parameters= JSON.stringify(parameters);
+    }
     var user = user_service.getCurrentUser();
     if (user && user.name)
         event.data.name = user.name;
