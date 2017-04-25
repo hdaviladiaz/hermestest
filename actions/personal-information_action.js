@@ -5,7 +5,7 @@ var execute = function (request) {
     var user = userService.getCurrentUser();
     var text = "I don't have your information yet.";
     if (user) {
-        text="";
+        text = "";
         if (informationFields) {
             for (var i in informationFields) {
                 var field = informationFields[i];
@@ -13,11 +13,10 @@ var execute = function (request) {
                     text += "Your " + field + " is " + user[field] + ".";
             }
         }
-        else{
-            text+="Here are your personal information.";
-            text+="Your name is "+user.name +".";
-            text+="Your lastname is "+user.lastname +".";
-            text+="Your passport is "+user.passport +".";
+        else {
+            text += "Here are your personal information.";
+            text += "Your name is " + user.name + " " + user.lastname + ".";
+            text += "and your passport is " + user.passport + ".";
         }
     }
     return {
