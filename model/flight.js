@@ -1,5 +1,5 @@
 var moment = require('moment');
-var patternFormat = 'MM/DD/YYYY';
+var patternFormat = 'YYYY-MM-DD';
 
 function Flight (origin, destination, date) {
   this.airline = 'LATAM';
@@ -15,7 +15,7 @@ var ramdonFlights = function(date){
   var options = [];
   for (var i = 0; i < numberTrips; i++) {
     options.push({
-      "date": moment(date, patternFormat).add(i, 'days').calendar(),
+      "date": moment(date, patternFormat).add(i, 'days').format(),
       "price": 500 + i * 50
     })
   }

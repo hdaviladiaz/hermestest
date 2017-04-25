@@ -7,10 +7,10 @@ var Flight = require('../../model/flight.js');
 
 var defaultOrigin = 'UIO';
 var defaultDestination = 'MAD';
-var defaultDepartureDate = moment('2017-01-05',patternFormat).calendar();
+var defaultDepartureDate = moment('2017-01-05',patternFormat).format();
 var expectedOrigin = 'Quito';
 var expectedDestination = 'Guayaquil';
-var expectedDepartureDate = moment('2018-01-22',patternFormat).calendar();
+var expectedDepartureDate = moment('2018-01-22',patternFormat).format();
 var expectedFlights;
 
 beforeEach(function() {
@@ -39,7 +39,7 @@ describe('Flight service searching', function() {
   it('should change dates of the trips with near suggested dates in the JSON response', function() {
     var flights = searchFlightService.searchFlights(defaultOrigin, defaultDestination, expectedDepartureDate);
     expectedFlights.trips = expectedFlights.trips.map(function(x, index){
-      x.date = moment(expectedDepartureDate, 'MM/DD/YYYY').add(index, 'days').calendar();
+      x.date = moment(expectedDepartureDate, patternFormat).add(index, 'days').format();
       return x;
     });
     expect(expectedFlights.trips).to.deep.equal(flights.trips);
