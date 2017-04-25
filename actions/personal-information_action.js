@@ -1,0 +1,27 @@
+var userService = require('../custom_modules/user.js');
+var userInformation = require('../actions/user-information_action.js');
+var execute = function (request) {
+    var informationFields = request.result.parameters.informationFields;
+    var user = userService.getCurrentUser();
+    var text = "";
+    if (user) {
+        if (informationFields) {
+            for (var i in informationFields) {
+                var field = informationFields[i];
+                if (user[field])
+                    text += "Your " + field + " is " + user[field] + ".";
+            }
+        }
+        else{
+            text+="Here are your personal information.";
+            text+="Your name is "+user.name +".";
+            text+="Your lastname is "+user.lastname +".";
+            text+="Your passport is "+user.passport +".";
+        }
+    }
+    return {
+        text: text
+    };
+}
+
+exports.execute = execute;

@@ -4,12 +4,12 @@ var execute = function (request) {
     var from = request.result.parameters.from || request.customParameters.from;
     var to = request.result.parameters.to|| request.customParameters.to;
     var user = userService.getCurrentUser();
-    if (!user) {
-        var eventRequest = userInformation.createEventRequest("get-flights",request.result.parameters);
-        return eventRequest;
-    }
+    // if (!user) {
+    //     var eventRequest = userInformation.createEventRequest("get-flights",request.result.parameters);
+    //     return eventRequest;
+    // }
     return {
-        text: user.name + " I found the following flights from " + from + " to " + to,
+        text: " I found the following flights from " + from + " to " + to,
     }
 }
 
