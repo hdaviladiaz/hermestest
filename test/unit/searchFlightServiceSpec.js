@@ -42,8 +42,12 @@ describe('Flight service searching', function() {
       x.date = moment(expectedDepartureDate, 'MM/DD/YYYY').add(index, 'days').calendar();
       return x;
     });
-    console.log(flights.trips.length)
     expect(expectedFlights.trips).to.deep.equal(flights.trips);
+  });
+
+  it('should change dates of the trips with near suggested dates in the JSON response', function() {
+    var text = searchFlightService.searchFlightsToText(expectedOrigin, expectedDestination, expectedDepartureDate)
+    expect(text).to.be.a('string');
   });
 
 });
