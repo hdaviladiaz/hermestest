@@ -8,6 +8,7 @@ var processRequest = function (request, response) {
         module_name = request.result.metadata.intentName;
     var options = executeModule(module_name, request, response);
     var result = response_builder.createResponse(options);
+    if (!result) result = { text: "I'm not sure I understood what you said" };
     response.end(JSON.stringify(result));
 }
 var executeModule = function (module_name, request) {
