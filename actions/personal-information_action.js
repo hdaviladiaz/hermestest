@@ -3,7 +3,7 @@ var userInformation = require('../actions/user-information_action.js');
 var execute = function (request) {
     var informationFields = request.result.parameters.informationFields;
     var user = userService.getCurrentUser();
-    var text = "";
+    var text = "I don't have your information yet.";
     if (user) {
         if (informationFields) {
             for (var i in informationFields) {
