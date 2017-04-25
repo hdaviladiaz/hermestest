@@ -17,11 +17,19 @@ var execute = function (request) {
 }
 
 var createEventRequest = function (actionName, parameters) {
+    var event = {
+        name: "get-user-information",
+        data: { "action": actionName, "parameters": JSON.stringify(parameters) }
+    };
+    var user = user_service.getCurrentUser();
+    if (user && user.name)
+        event.data.name = user.name;
+    if (user && user.lastname)
+        event.data.lastname = user.lastname;
+    if (user && user.passport)
+        event.data.passport = user.passport;
     return {
-        event: {
-            name: "get-user-information",
-            data: { "action": actionName, "parameters": JSON.stringify(parameters) }
-        }
+        event: event
     }
 }
 
