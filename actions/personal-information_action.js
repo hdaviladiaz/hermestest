@@ -5,6 +5,7 @@ var execute = function (request) {
     var user = userService.getCurrentUser();
     var text = "I don't have your information yet.";
     if (user) {
+        text="";
         if (informationFields) {
             for (var i in informationFields) {
                 var field = informationFields[i];
