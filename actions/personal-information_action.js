@@ -9,6 +9,7 @@ var execute = function (request) {
         if (informationFields && informationFields.length > 0) {
             for (var i in informationFields) {
                 var field = informationFields[i];
+                field=field.replace(" ","");
                 if (user[field])
                     text += "Your " + field + " is " + user[field] + ".";
             }
