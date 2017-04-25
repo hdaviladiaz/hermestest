@@ -42,6 +42,7 @@ describe('Flight service searching', function() {
       x.date = moment(expectedDepartureDate, 'MM/DD/YYYY').add(index, 'days').calendar();
       return x;
     });
+    console.log(flights.trips.length)
     expect(expectedFlights.trips).to.deep.equal(flights.trips);
   });
 

@@ -12,10 +12,10 @@ var execute = function (request) {
     //     var eventRequest = userInformation.createEventRequest("get-flights",request.result.parameters);
     //     return eventRequest;
     // }
-    var text = " I found in LATAM " + flightsResult.trips.lenght + " flights from " + from + " to " + to + ".";
+    var text = " I found in LATAM " + flightsResult.trips.length + " flights from " + from + " to " + to + ".";
     for (var i in flightsResult.trips) {
         var trip = flightsResult.trips[i];
-        text += (i + 1) + " In " + trip.date + " with a cost of " + trip.price;
+        text += " One for " +trip.price  + " in " + trip.date +". ";
     }
     return {
         text: text,
