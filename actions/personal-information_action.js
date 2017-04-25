@@ -6,7 +6,7 @@ var execute = function (request) {
     var text = "I don't have your information yet.";
     if (user) {
         text = "";
-        if (informationFields) {
+        if (informationFields && informationFields.lenght > 0) {
             for (var i in informationFields) {
                 var field = informationFields[i];
                 if (user[field])
