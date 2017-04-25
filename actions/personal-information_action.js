@@ -15,8 +15,8 @@ var execute = function (request) {
         }
         else {
             text += "Here are your personal information.";
-            text += "Your name is " + user.name + " " + user.lastname + ".";
-            text += "and your passport is " + user.passport + ".";
+            text += "Your name is " + user.name + " " + user.lastname;
+            text += " and your passport is " + user.passport + ".";
         }
     }
     return {
