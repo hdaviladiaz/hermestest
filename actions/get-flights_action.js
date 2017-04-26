@@ -8,7 +8,7 @@ var execute = function (request) {
     var from = request.result.parameters.from || request.customParameters.from;
     var to = request.result.parameters.to || request.customParameters.to;
     var date = request.result.parameters.date || request.customParameters.date || todayStr;
-    var text = searchFlightService.searchFlightsToText(from, to, date);
+    var text = searchFlightService.searchFlights(from, to, date);
     return {
         text: text
     }
