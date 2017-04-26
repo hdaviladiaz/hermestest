@@ -14,7 +14,7 @@ var searchFlights = function (origin, destination, date, page) {
   if (!flight || !flight.trips || flight.trips.length == 0) {
     return text
   }
-  text = " I found in LATAM " + flight.pagination.count + " flights from " + origin + " to " + destination + ". ";
+  text = " I found in LATAM " + flight.pagination.count + " flights for "+humanize.naturalDay(date.unix())+" from " + origin + " to " + destination + ". ";
   _.each(flight.trips, function (trip, index) {
     var date = moment(trip.departure.date, "YYYY-MM-DD");
     text += humanize.ordinal(index + 1) + " for " + trip.price + " " + flight.currency + ".";
@@ -40,7 +40,7 @@ var moreFlights = function () {
     text += humanize.ordinal(index + 1 + (storedPage-1) * 2) + " for " + trip.price + " " + flight.currency + ".";
     // + humanize.naturalDay(date.unix()) + ". "
   })
-  return {text:text};
+  return text;
 }
 
 exports.searchFlights = searchFlights;
