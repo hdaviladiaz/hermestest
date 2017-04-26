@@ -46,7 +46,7 @@ var ramdonFlights = function (origin, destination, date, page, limit) {
 
   return {
     count: options.length,
-    elements: options.slice(page - 1, page * limit)
+    elements: options.slice((page - 1) * limit, ((page - 1) * limit)+limit)
   };
 }
 
