@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var humanize = require('humanize');
+var moment=require('moment');
 var searchFlightGestor = require('../gestor/searchFlightGestor.js');
 var storedPage = 1;
 var storedOrigin, storedDestination, storedDate;
@@ -15,8 +16,9 @@ var searchFlights = function (origin, destination, date, page) {
   }
   text = " I found in LATAM " + flight.pagination.count + " flights from " + origin + " to " + destination + ". ";
   _.each(flight.trips, function (trip, index) {
-    text += humanize.ordinal(index + 1) + " for " + trip.price + " " + flight.currency + " on "
-      + humanize.naturalDay(trip.departure.date, "MM/DD/YYYY") + ". "
+    var date=moment(trip.departure.date,"YYYY-MM-DD");
+    text += humanize.ordinal(index + 1) + " for " + trip.price + " " + flight.currency + ".";
+      // + humanize.naturalDay(date.unix()) + ". "
   })
   storedPage = page;
   storedDate = date;

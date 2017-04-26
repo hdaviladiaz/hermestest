@@ -32,12 +32,12 @@ var ramdonFlights = function (origin, destination, date, page, limit) {
       "duration": duration,
       "layovers": [],
       "departure": {
-        "date": moment(date, patternFormat).add(i, 'days').format(),
+        "date": moment(date, patternFormat).add(0, 'days').format(),
         "time": moment(date, patternFormat).add(i, 'minutes').format('HH:mm'),
         "airport": origin + " airport"
       },
       "arrival": {
-        "date": moment(date, patternFormat).add(i, 'days').format(),
+        "date": moment(date, patternFormat).add(0, 'days').format(),
         "time": moment(date, patternFormat).add(i + duration, 'minutes').format('HH:mm'),
         "airport": destination + " airport"
       }
@@ -46,7 +46,7 @@ var ramdonFlights = function (origin, destination, date, page, limit) {
 
   return {
     count: options.length,
-    elements: _.shuffle(options.slice(page - 1, page * limit))
+    elements: options.slice(page - 1, page * limit)
   };
 }
 
