@@ -38,10 +38,18 @@ var getCheaperFlights = function (numberOfFlights) {
   if (!searchFlightGestor.isStoredData()) {
     return text;
   }
-  text = "Based on your requirements, I found the following flights:";
-  _.each(flights.trips, function (trip, index) {
-    text += humanize.ordinal(index + 1) + " for " + trip.price + " " + flights.currency + ".";
-  })
+  if (numberOfFlights == 1) {
+    var momentDate = moment(flights.trips[0].departure.date, "YYYY-MM-DD");
+    text = "The cheapest flight for " + humanize.naturalDay(momentDate.unix()) + " has a cost of "
+      + flights.trips[0].price + " " + flights.currency + ".";
+  }
+  else {
+    var momentDate = moment(flights.trips[0].departure.date, "YYYY-MM-DD");
+    text = "The cheapest flights for " + humanize.naturalDay(momentDate.unix()) + " are: ";
+    _.each(flights.trips, function (trip, index) {
+      text += humanize.ordinal(index + 1) + " for " + trip.price + " " + flights.currency + ".";
+    })
+  }
   return text;
 }
 
