@@ -38,5 +38,20 @@ var moreFlights = function () {
   return text;
 }
 
+var moreFlights = function () {
+  storedPage = storedPage + 1;
+  var flight = searchFlightGestor.searchFlights(storedOrigin, storedDestination, storedDate, storedPage);
+  var text = "There are no more flights.";
+  if (!flight || !flight.trips || flight.trips.length == 0) {
+    storedPage = storedPage - 1;
+    return text
+  }
+  text = "";
+  _.each(flight.trips, function (trip, index) {
+    text += humanize.ordinal(index + 1 + (storedPage - 1) * 2) + " for " + trip.price + " " + flight.currency + ".";
+  })
+  return text;
+}
+
 exports.searchFlights = searchFlights;
 exports.moreFlights = moreFlights;
