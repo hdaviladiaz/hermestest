@@ -39,8 +39,8 @@ var getCheaperFlights = function (numberOfFlights) {
     return text;
   }
   text = "Based on your requirements, I found the following flights:";
-  _.each(flight.trips, function (trip, index) {
-    text += humanize.ordinal(index + 1) + " for " + trip.price + " " + flight.currency + ".";
+  _.each(flights.trips, function (trip, index) {
+    text += humanize.ordinal(index + 1) + " for " + trip.price + " " + flights.currency + ".";
   })
   return text;
 }
