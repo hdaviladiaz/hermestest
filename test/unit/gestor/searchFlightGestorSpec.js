@@ -39,19 +39,19 @@ describe('Flight gestor searching', function () {
   it('should change dates of the trips with near suggested dates in the JSON response', function () {
     var flights = searchFlightGestor.searchFlights(defaultOrigin, defaultDestination, expectedDepartureDate);
     expectedFlights.trips = expectedFlights.trips.map(function (x, index) {
-      var duration = 60 + (index * 20);;
+      var duration = 60 + (index * 20);
       x.flightId = "LT" + (index + 1) + "F" + (index + 1) * 100,
         x.price = 500 + index * 50,
         x.class = index % 2 == 0 ? "first" : "tourist",
         x.duration = duration,
         x.layovers = [],
         x.departure = {
-          "date": moment(expectedDepartureDate, patternFormat).add(index, 'days').format(),
+          "date": moment(expectedDepartureDate, patternFormat).add(0, 'days').format(),
           "time": moment(expectedDepartureDate, patternFormat).add(index, 'minutes').format('HH:mm'),
           "airport": defaultOrigin + " airport"
         },
         x.arrival = {
-          "date": moment(expectedDepartureDate, patternFormat).add(index, 'days').format(),
+          "date": moment(expectedDepartureDate, patternFormat).add(0, 'days').format(),
           "time": moment(expectedDepartureDate, patternFormat).add(index + duration, 'minutes').format('HH:mm'),
           "airport": defaultDestination + " airport"
         }
