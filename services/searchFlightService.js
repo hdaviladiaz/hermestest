@@ -20,11 +20,11 @@ var searchFlights = function (origin, destination, date) {
 
 
 var moreFlights = function (index) {
+
+  var text = "I have no options saved. Please give me the travel information.";
+  if (!searchFlightGestor.isStoredData())
+    return text;
   var flight = searchFlightGestor.moreFlights(index);
-  var text = "There are no more flights.";
-  if (!flight || !flight.trips || flight.trips.length == 0) {
-    return text
-  }
   text = "";
   if (index) {
     if (flight.trips.length > 0)
