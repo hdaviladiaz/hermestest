@@ -34,8 +34,8 @@ var moreFlights = function () {
 
 var getCheaperFlights = function (numberOfFlights) {
   var flights = searchFlightGestor.getCheaperFlights(numberOfFlights);
-  var text = "I have no options saved.";
-  if (!flights || !flights.trips || flights.trips.length == 0) {
+  var text = "I have no options saved. Please give me the travel information.";
+  if (!searchFlightGestor.isStoredData()) {
     return text;
   }
   text = "Based on your requirements, I found the following flights:";
