@@ -80,4 +80,10 @@ describe('Flight gestor searching', function () {
     expect(flights.trips).to.have.lengthOf(limit);
   });
 
+  it('should return cheaper flights', function () {
+    var numberOfFlights=1;
+    var cheaperFlights = searchFlightGestor.getCheaperFlights(numberOfFlights);
+    expect(cheaperFlights.trips).to.have.lengthOf(numberOfFlights);
+  });
+
 });

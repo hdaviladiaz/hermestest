@@ -4,7 +4,7 @@ var _ = require('underscore');
 
 function Flight(origin, destination, date, page, limit) {
   page = page || 1;
-  limit = limit || 2;
+  limit = limit || 10;
   var flights = ramdonFlights(origin, destination, date, page, limit);
   this.airline = 'LATAM';
   this.from = origin || '';
