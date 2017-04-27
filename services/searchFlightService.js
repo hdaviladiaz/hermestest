@@ -19,16 +19,25 @@ var searchFlights = function (origin, destination, date) {
 }
 
 
-var moreFlights = function () {
-  var flight = searchFlightGestor.moreFlights();
+var moreFlights = function (index) {
+  var flight = searchFlightGestor.moreFlights(index);
   var text = "There are no more flights.";
   if (!flight || !flight.trips || flight.trips.length == 0) {
     return text
   }
   text = "";
-  _.each(flight.trips, function (trip, index) {
-    text += humanize.ordinal(index + 1 + (flight.pagination.page - 1) * 2) + " for " + trip.price + " " + flight.currency + ".";
-  })
+  if (index) {
+    if (flight.trips.length > 0)
+      text += humanize.ordinal(index) + " for " + flight.trips[0].price + " " + flight.currency + ".";
+    else
+      text += "This fligth does not exist."
+  }
+  else {
+    _.each(flight.trips, function (trip, index) {
+      text += humanize.ordinal(index + 1 + (flight.pagination.page - 1) * 2) + " for " + trip.price + " " + flight.currency + ".";
+    })
+  }
+
   return text;
 }
 
