@@ -63,7 +63,7 @@ var isStoredData = function () {
     return storedData && storedData.hasState();
 }
 
-exports.getFlightTime=getFlightTime;
+exports.getFlightTime = getFlightTime;
 exports.isStoredData = isStoredData;
 exports.getCheaperFlights = getCheaperFlights;
 exports.moreFlights = moreFlights;
