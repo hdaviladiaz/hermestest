@@ -71,22 +71,22 @@ var getFlightTime = function (index) {
   text = "";
   if (index) {
     if (flight.trips.length > 0)
-      text +="The "+ humanize.ordinal(index) + " option leaves at " + flight.trips[0].departure.time 
-      +" and arrives at "+flight.trips[0].arrival.time;
+      text += "The " + humanize.ordinal(index) + " option leaves at " + flight.trips[0].departure.time
+        + " and arrives at " + flight.trips[0].arrival.time;
     else
       text += "This fligth does not exist."
   }
   else {
     _.each(flight.trips, function (trip, index) {
-      text +="The "+ humanize.ordinal(index) + " option leaves at " + trip.departure.time 
-      +" and arrives at "+trip.arrival.time;
+      text += "The " + humanize.ordinal(index + 1) + " option leaves at " + trip.departure.time
+        + " and arrives at " + trip.arrival.time;
     })
   }
 
   return text;
 }
 
-exports.getFlightTime=getFlightTime;
+exports.getFlightTime = getFlightTime;
 exports.searchFlights = searchFlights;
 exports.moreFlights = moreFlights;
 exports.getCheaperFlights = getCheaperFlights;
