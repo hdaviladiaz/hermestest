@@ -62,6 +62,31 @@ var getCheaperFlights = function (numberOfFlights) {
   return text;
 }
 
+var getFlightTime = function (index) {
+
+  var text = "I have no options saved. Please give me the travel information.";
+  if (!searchFlightGestor.isStoredData())
+    return text;
+  var flight = searchFlightGestor.getFlightTime(index);
+  text = "";
+  if (index) {
+    if (flight.trips.length > 0)
+      text +="The "+ humanize.ordinal(index) + " option leaves at " + flight.trips[0].departure.time 
+      +" and arrives at "+flight.trips[0].arrival.time;
+    else
+      text += "This fligth does not exist."
+  }
+  else {
+    _.each(flight.trips, function (trip, index) {
+      text +="The "+ humanize.ordinal(index) + " option leaves at " + trip.departure.time 
+      +" and arrives at "+trip.arrival.time;
+    })
+  }
+
+  return text;
+}
+
+exports.getFlightTime=getFlightTime;
 exports.searchFlights = searchFlights;
 exports.moreFlights = moreFlights;
 exports.getCheaperFlights = getCheaperFlights;
